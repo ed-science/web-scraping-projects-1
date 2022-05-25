@@ -18,7 +18,7 @@ class SearchSpiderSpider(scrapy.Spider):
         self.keyword = keyword
 
     def start_requests(self):
-        self.start_urls = ['http://search.bilibili.com/all?keyword='+self.keyword]
+        self.start_urls = [f'http://search.bilibili.com/all?keyword={self.keyword}']
         for url in self.start_urls:
             yield Request(url,callback=self.parse)
 
@@ -29,7 +29,7 @@ class SearchSpiderSpider(scrapy.Spider):
             yield Request(url,callback=self.parse_video_detail)
         # get result from top 50 pages
         for i in list(range(2,51)):
-            url = response.urljoin("all?keyword="+self.keyword+"&page="+str(i))
+            url = response.urljoin(f"all?keyword={self.keyword}&page={str(i)}")
             yield Request(url,callback=self.parse)
         
     

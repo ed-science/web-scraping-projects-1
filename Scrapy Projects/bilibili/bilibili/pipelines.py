@@ -27,7 +27,7 @@ class BilibiliPipeline(object):
     def __init__(self,argvalue):
         #create a new folder to store data
         self.job_start_time = str(datetime.datetime.now().strftime('%Y-%m-%d %H-%M-%S'))
-        self.datapath = "data/" + self.job_start_time + "-" + argvalue + "/"
+        self.datapath = f"data/{self.job_start_time}-" + argvalue + "/"
         os.mkdir(self.datapath)
         #Acv
         self.acvfile = open(self.datapath + "acv.jl","wb")
