@@ -5,5 +5,4 @@ def dict_find_all(key, value):
         if k == key:
             yield v
         elif isinstance(v, (dict, list)):
-            for result in dict_find_all(key, v):
-                yield result
+            yield from dict_find_all(key, v)
